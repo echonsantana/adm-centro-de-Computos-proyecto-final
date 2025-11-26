@@ -3,392 +3,401 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyecto LAN Escalable - TechSolutions S.A.</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>LAN Escalable - Presentación</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: #0a0f2d;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: auto;
+            position: relative;
+            padding: 20px;
+        }
+        
+        .container {
+            text-align: center;
+            max-width: 1200px;
+            width: 95%;
+            padding: 40px 30px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .header {
+            margin-bottom: 50px;
+        }
+        
+        .network-icon {
+            font-size: 4em;
+            margin-bottom: 25px;
+            animation: glow 3s ease-in-out infinite alternate;
+            filter: drop-shadow(0 0 20px #00f2fe);
+        }
+        
+        @keyframes glow {
+            from { transform: scale(1); filter: drop-shadow(0 0 20px #00f2fe); }
+            to { transform: scale(1.1); filter: drop-shadow(0 0 30px #4facfe); }
+        }
+        
+        .project-title {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #00f2fe, #4facfe, #00f2fe);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-shadow: 0 0 30px rgba(79, 172, 254, 0.5);
+        }
+        
+        .course {
+            font-size: 1.4em;
+            color: #a8d0ff;
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        
+        .professor {
+            font-size: 1.1em;
+            color: #74b9ff;
+            margin-bottom: 40px;
+        }
+        
+        .team-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin: 50px 0;
+        }
+        
+        .team-member {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(79, 172, 254, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .team-member::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(79, 172, 254, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .team-member:hover::before {
+            left: 100%;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-8px);
+            border-color: #4facfe;
+            box-shadow: 0 15px 40px rgba(79, 172, 254, 0.3);
+        }
+        
+        .member-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+        
+        .member-name {
+            font-size: 1.5em;
+            color: #4facfe;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .member-role {
+            font-size: 1em;
+            color: #00f2fe;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .member-description {
+            color: #b0d0ff;
+            line-height: 1.5;
+            font-size: 0.95em;
+        }
+        
+        .company-section {
+            margin: 20px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+        
+        .company-title {
+            font-size: 2em;
+            background: linear-gradient(45deg, #ffd166, #ff9e00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .company-subtitle {
+            color: #ffd166;
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        /* BOTÓN CON TAMAÑO AJUSTADO */
+        .btn-entrar {
+            display: inline-block;
+            padding: 18px 45px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 700;
+            transition: all 0.4s ease;
+            margin: 35px 0 25px 0;
+            box-shadow: 0 10px 30px rgba(79, 172, 254, 0.5);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 1px;
+            z-index: 100;
+        }
+        
+        .btn-entrar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .btn-entrar:hover::before {
+            left: 100%;
+        }
+        
+        .btn-entrar:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(79, 172, 254, 0.8);
+        }
+        
+        /* Elementos de fondo de red */
+        .network-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .node {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #00f2fe;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #00f2fe;
+            animation: nodePulse 4s infinite ease-in-out;
+        }
+        
+        .connection {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #00f2fe, transparent);
+            transform-origin: 0 0;
+        }
+        
+        .data-packet {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #4facfe;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #4facfe;
+            animation: dataFlow 8s linear infinite;
+        }
+        
+        @keyframes nodePulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+        
+        @keyframes dataFlow {
+            0% { transform: translateX(0) translateY(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateX(80px) translateY(40px); opacity: 0; }
+        }
+        
+        @media (max-width: 768px) {
+            .project-title {
+                font-size: 2.2em;
+            }
+            
+            .team-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-member {
+                padding: 25px;
+            }
+            
+            .btn-entrar {
+                padding: 16px 35px;
+                font-size: 1.1em;
+            }
+        }
+    </style>
 </head>
 <body>
-
-    <!-- Fondo de redes animado -->
+    <!-- Fondo con elementos de red -->
     <div class="network-bg" id="networkBackground"></div>
     
     <div class="container">
-    <div class="container">
-        <!-- Header -->
         <div class="header">
-            <h1>🌐 Implementación de una Red de Área Local (LAN) Escalable</h1>
-            <div class="subtitle">Proyecto Final - Administración de Centros de Cómputo</div>
-            <div class="subtitle"><strong>Profesor:</strong> José Ml. Amado</div>
-            <div class="subtitle"><strong>Fecha:</strong> 25/11/2025</div>
-
-            <!-- Equipo de trabajo -->
-            <div class="team-grid">
-                <div class="team-member">
-                    <h3>👨‍💻 Edidson Rodriguez</h3>
-                    <p>100053133</p>
-                    <p><em>Arquitectura de Red</em></p>
-                </div>
-                <div class="team-member">
-                    <h3>🔧 Makenson Jean</h3>
-                    <p>100382663</p>
-                    <p><em>Configuración y Pruebas</em></p>
-                </div>
-                <div class="team-member">
-                    <h3>📊 Santo Adon Mambru</h3>
-                    <p>100080944</p>
-                    <p><em>Documentación y Análisis</em></p>
-                </div>
+            <div class="network-icon">🌐</div>
+            <h1 class="project-title">Implementación de una Red de Área Local (LAN) Escalable</h1>
+            <div class="course">ProyectoFinal</div>
+            <div class="course">Administración de Centros de Cómputo</div>
+            <div class="professor">Profesor: José Ml. Amado</div>
+        </div>
+        
+        <div class="team-section">
+            <div class="team-member">
+                <div class="member-icon">👨‍💻</div>
+                <h3 class="member-name">Edidson Rodríguez</h3>
+                <div class="member-role">Arquitecto de Red & Líder en Proyectos</div>
+                <p class="member-description">
+                    Especialista en diseño de infraestructura de red. Responsable de la planificación estratégica, 
+                    diseño de topologías y supervisión de la implementación técnica del proyecto.
+                </p>
+            </div>
+            
+            <div class="team-member">
+                <div class="member-icon">🔧</div>
+                <h3 class="member-name">Makenson Jean</h3>
+                <div class="member-role">Ingeniero de Configuración & Seguridad</div>
+                <p class="member-description">
+                    Experto en configuración de switches, routers y firewalls. Encargado de la implementación 
+                    de VLANs, políticas de seguridad y optimización del rendimiento de la red.
+                </p>
+            </div>
+            
+            <div class="team-member">
+                <div class="member-icon">📊</div>
+                <h3 class="member-name">Santo Adon Mambru</h3>
+                <div class="member-role">Analista de Sistemas & Documentación</div>
+                <p class="member-description">
+                    Analista de requerimientos y documentación técnica. Responsable del análisis de costos, 
+                    ROI y creación de la documentación completa del proyecto y manuales de operación.
+                </p>
             </div>
         </div>
-
-        <!-- ========== MINUTO 1-2: INTRODUCCIÓN ========== -->
-        <div class="card timing-section" id="introduccion">
-            <div class="timing-indicator">Min 1-2</div>
-            <h2>📢 Introducción y Problema</h2>
-            
-            <div class="script-highlight">
-                <strong>TechSolutions S.A. - 50 empleados</strong>
-            </div>
-            
-            <div class="console">
-                <div class="command">Switch# show vlan brief</div>
-                <div class="output">
-                    VLAN Name                             Status    Ports<br>
-                    ---- -------------------------------- --------- -------------------------------<br>
-                    1    default                          active    Fa0/1-24<br>
-                    <span style="color: #e74c3c;">⚠️  Solo VLAN nativa - Sin segmentación</span>
-                </div>
-            </div>
-
-            <div class="problem-list">
-                <div class="problem-item">
-                    <span class="problem-icon">🔴</span>
-                    <div>
-                        <strong>Difusión excesiva de broadcast</strong>
-                        <p>Tráfico innecesario afecta el rendimiento</p>
-                    </div>
-                </div>
-                <div class="problem-item">
-                    <span class="problem-icon">🔴</span>
-                    <div>
-                        <strong>Riesgos de seguridad</strong>
-                        <p>Datos sensibles expuestos entre departamentos</p>
-                    </div>
-                </div>
-                <div class="problem-item">
-                    <span class="problem-icon">🔴</span>
-                    <div>
-                        <strong>Control imposible</strong>
-                        <p>No se puede administrar por departamentos</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="impact-phrase">
-                "Imaginen una red donde el tráfico de finanzas se mezcla con visitantes... eso era TechSolutions antes de nuestro proyecto"
-            </div>
+        
+        <div class="company-section">
+            <div class="company-title">TECHSOLUTIONS S.A.</div>
+            <div class="company-subtitle">Partner Tecnológico & Cliente Corporativo</div>
         </div>
 
-        <!-- ========== MINUTO 3-4: SOLUCIÓN TÉCNICA ========== -->
-        <div class="card timing-section" id="solucion-tecnica">
-            <div class="timing-indicator">Min 3-4</div>
-            <h2>🔧 Solución Técnica - VLANs y Subnetting</h2>
+        <!-- BOTÓN CON TAMAÑO CORREGIDO -->
+        <a href="presentation.html" class="btn-entrar">
+            🚀 INICIAR PRESENTACIÓN COMPLETA
+        </a>
+
+    </div>
+
+    <script>
+        function createNetworkBackground() {
+            const bg = document.getElementById('networkBackground');
+            const nodes = [];
+            const numNodes = 20;
             
-            <div class="solution-highlights">
-                <div class="highlight-item">
-                    <span class="highlight-number">5</span>
-                    <span>VLANs Estratégicas</span>
-                </div>
-                <div class="highlight-item">
-                    <span class="highlight-number">254</span>
-                    <span>Dispositivos por Departamento</span>
-                </div>
-                <div class="highlight-item">
-                    <span class="highlight-number">192.168.0.0/16</span>
-                    <span>Bloque Principal</span>
-                </div>
-            </div>
-
-            <div class="console">
-                <div class="command">Switch(config)# vlan 10</div>
-                <div class="command">Switch(config-vlan)# name ADMINISTRACION</div>
-                <div class="command">Switch(config)# interface vlan 10</div>
-                <div class="command">Switch(config-if)# ip address 192.168.10.1 255.255.255.0</div>
-                <div class="output">✅ VLAN 10 configurada exitosamente</div>
-            </div>
-
-            <table class="vlan-table">
-                <thead>
-                    <tr>
-                        <th>VLAN</th>
-                        <th>Departamento</th>
-                        <th>Subred</th>
-                        <th>Gateway</th>
-                        <th>Hosts Disponibles</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>VLAN10</strong></td>
-                        <td>🏢 Administración</td>
-                        <td>192.168.10.0/24</td>
-                        <td>192.168.10.1</td>
-                        <td>.2 - .254</td>
-                    </tr>
-                    <tr>
-                        <td><strong>VLAN20</strong></td>
-                        <td>💼 Ventas</td>
-                        <td>192.168.20.0/24</td>
-                        <td>192.168.20.1</td>
-                        <td>.2 - .254</td>
-                    </tr>
-                    <tr>
-                        <td><strong>VLAN30</strong></td>
-                        <td>💰 Finanzas</td>
-                        <td>192.168.30.0/24</td>
-                        <td>192.168.30.1</td>
-                        <td>.2 - .254</td>
-                    </tr>
-                    <tr>
-                        <td><strong>VLAN40</strong></td>
-                        <td>👥 Invitados</td>
-                        <td>192.168.40.0/24</td>
-                        <td>192.168.40.1</td>
-                        <td>.2 - .254</td>
-                    </tr>
-                    <tr>
-                        <td><strong>VLAN50</strong></td>
-                        <td>🛠️ Soporte</td>
-                        <td>192.168.50.0/24</td>
-                        <td>192.168.50.1</td>
-                        <td>.2 - .254</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="impact-phrase">
-                "5 VLANs = 5 dominios de seguridad independientes"
-            </div>
-        </div>
-
-        <!-- ========== MINUTO 5-6: SEGURIDAD Y COSTOS ========== -->
-        <div class="card timing-section" id="seguridad-costos">
-            <div class="timing-indicator">Min 5-6</div>
-            <h2>🛡️ Seguridad y Costos</h2>
-            
-            <div class="security-grid">
-                <div class="security-item">
-                    <h3>🔒 DHCP Snooping</h3>
-                    <p>Evita servidores DHCP no autorizados</p>
-                    <div class="security-detail">
-                        <strong>Puertos de acceso:</strong> No confiables<br>
-                        <strong>Puertos troncales:</strong> Trusted
-                    </div>
-                </div>
-                <div class="security-item">
-                    <h3>🚫 ACLs</h3>
-                    <p>Control de tráfico inter-VLAN</p>
-                    <div class="security-detail">
-                        <strong>Invitados:</strong> Solo Internet<br>
-                        <strong>Finanzas:</strong> Solo servidor ERP
-                    </div>
-                </div>
-                <div class="security-item">
-                    <h3>🔐 Port Security</h3>
-                    <p>Límite de MAC addresses</p>
-                    <div class="security-detail">
-                        <strong>Máximo:</strong> 3 dispositivos/puerto<br>
-                        <strong>Violation:</strong> Restrict
-                    </div>
-                </div>
-            </div>
-
-            <div class="console">
-                <div class="command">Switch(config)# ip dhcp snooping</div>
-                <div class="command">Switch(config)# ip dhcp snooping vlan 10,20,30,40,50</div>
-                <div class="output">✅ DHCP Snooping configurado</div>
-            </div>
-
-            <!-- Costos -->
-            <div class="cost-section">
-                <h3>💰 Inversión y ROI</h3>
-                <div class="investment-highlight">
-                    <span class="investment-amount">$11,100 USD</span>
-                    <span class="roi">ROI: 18-24 meses</span>
-                </div>
+            // Crear nodos
+            for (let i = 0; i < numNodes; i++) {
+                const node = document.createElement('div');
+                node.classList.add('node');
                 
-                <div class="cost-breakdown">
-                    <div class="cost-item">
-                        <div>⚡ Switch L3</div>
-                        <div class="amount">$3,800</div>
-                        <div>Catalyst 9300</div>
-                    </div>
-                    <div class="cost-item">
-                        <div>🔗 Switches L2</div>
-                        <div class="amount">$2,400</div>
-                        <div>3 x Catalyst 2960-X</div>
-                    </div>
-                    <div class="cost-item">
-                        <div>🌐 Router</div>
-                        <div class="amount">$2,500</div>
-                        <div>ISR 4331</div>
-                    </div>
-                    <div class="cost-item">
-                        <div>🔧 Implementación</div>
-                        <div class="amount">$2,400</div>
-                        <div>Mano de obra</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="impact-phrase">
-                "$11,100 USD que previenen pérdidas millonarias por brechas de seguridad"
-            </div>
-        </div>
-
-        <!-- ========== MINUTO 7-8: COMPARATIVAS ========== -->
-        <div class="card timing-section" id="comparativas">
-            <div class="timing-indicator">Min 7-8</div>
-            <h2>🏪 Comparativas y Recomendación</h2>
+                const x = Math.random() * 95;
+                const y = Math.random() * 95;
+                
+                node.style.left = `${x}vw`;
+                node.style.top = `${y}vh`;
+                node.style.animationDelay = `${Math.random() * 4}s`;
+                node.style.opacity = 0.4 + Math.random() * 0.6;
+                
+                bg.appendChild(node);
+                nodes.push({ x, y, element: node });
+            }
             
-            <div class="vendor-comparison">
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Característica</th>
-                            <th>Cisco</th>
-                            <th>HPE/Aruba</th>
-                            <th>MikroTik</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Costo</strong></td>
-                            <td><span class="rating fair">Alto</span></td>
-                            <td><span class="rating good">Competitivo</span></td>
-                            <td><span class="rating excellent">Excelente</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Rendimiento</strong></td>
-                            <td><span class="rating excellent">Excelente</span></td>
-                            <td><span class="rating good">Muy Bueno</span></td>
-                            <td><span class="rating fair">Adecuado</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Seguridad</strong></td>
-                            <td><span class="rating excellent">Excelente</span></td>
-                            <td><span class="rating good">Bueno</span></td>
-                            <td><span class="rating fair">Básica</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Soporte</strong></td>
-                            <td><span class="rating excellent">Superior</span></td>
-                            <td><span class="rating good">Adecuado</span></td>
-                            <td><span class="rating fair">Limitado</span></td>
-                        </tr>
-                        <tr class="recommendation-row">
-                            <td><strong>Recomendación</strong></td>
-                            <td><strong class="chosen">✅ ELEGIDO</strong></td>
-                            <td>⭐ ALTERNATIVA</td>
-                            <td>🟡 PRESUPUESTO</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="recommendation-reason">
-                <h3>¿Por qué Cisco?</h3>
-                <ul>
-                    <li>✅ Ecosistema más maduro y robusto</li>
-                    <li>✅ Soporte técnico superior 24/7</li>
-                    <li>✅ Máxima escalabilidad para crecimiento futuro</li>
-                    <li>✅ Mejor integración con soluciones empresariales</li>
-                </ul>
-            </div>
-
-            <div class="impact-phrase">
-                "No se trata solo de conectar dispositivos, sino de habilitar el crecimiento empresarial"
-            </div>
-        </div>
-
-        <!-- ========== MINUTO 9-10: CONCLUSIÓN ========== -->
-        <div class="card timing-section" id="conclusion">
-            <div class="timing-indicator">Min 9-10</div>
-            <h2>🚀 Conclusión y Preguntas</h2>
+            // Crear conexiones
+            for (let i = 0; i < nodes.length; i++) {
+                for (let j = i + 1; j < nodes.length; j++) {
+                    const distance = Math.sqrt(
+                        Math.pow(nodes[i].x - nodes[j].x, 2) + 
+                        Math.pow(nodes[i].y - nodes[j].y, 2)
+                    );
+                    
+                    if (distance < 25) {
+                        const connection = document.createElement('div');
+                        connection.classList.add('connection');
+                        
+                        const deltaX = nodes[j].x - nodes[i].x;
+                        const deltaY = nodes[j].y - nodes[i].y;
+                        
+                        const length = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+                        const angle = Math.atan2(deltaY, deltaX) * 180 / Math.PI;
+                        
+                        connection.style.width = `${length}vw`;
+                        connection.style.left = `${nodes[i].x}vw`;
+                        connection.style.top = `${nodes[i].y}vh`;
+                        connection.style.transform = `rotate(${angle}deg)`;
+                        connection.style.opacity = 0.1 + Math.random() * 0.2;
+                        
+                        bg.appendChild(connection);
+                    }
+                }
+            }
             
-            <div class="results-summary">
-                <h3>✅ Resultados Obtenidos</h3>
-                <div class="results-grid">
-                    <div class="result-item">
-                        <span class="result-icon">🏗️</span>
-                        <div>
-                            <strong>5 VLANs estratégicas</strong>
-                            <p>Implementadas y operativas</p>
-                        </div>
-                    </div>
-                    <div class="result-item">
-                        <span class="result-icon">🛡️</span>
-                        <div>
-                            <strong>Seguridad multicapa</strong>
-                            <p>Protección integral activa</p>
-                        </div>
-                    </div>
-                    <div class="result-item">
-                        <span class="result-icon">📈</span>
-                        <div>
-                            <strong>Escalabilidad garantizada</strong>
-                            <p>250+ dispositivos por departamento</p>
-                        </div>
-                    </div>
-                    <div class="result-item">
-                        <span class="result-icon">💰</span>
-                        <div>
-                            <strong>ROI 18-24 meses</strong>
-                            <p>Inversión inteligente</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="console">
-                <div class="command">Switch# show ip route</div>
-                <div class="output">
-                    C    192.168.10.0/24 is directly connected, Vlan10<br>
-                    C    192.168.20.0/24 is directly connected, Vlan20<br>
-                    C    192.168.30.0/24 is directly connected, Vlan30<br>
-                    C    192.168.40.0/24 is directly connected, Vlan40<br>
-                    C    192.168.50.0/24 is directly connected, Vlan50<br>
-                    ✅ Todas las rutas operativas y conectadas
-                </div>
-            </div>
-
-            <div class="final-recommendation">
-                <h3>🎯 Próximos Pasos Recomendados</h3>
-                <ol>
-                    <li><strong>Implementación piloto</strong> - Fase de pruebas controlada</li>
-                    <li><strong>Capacitación del personal</strong> - Entrenamiento en nuevas políticas</li>
-                    <li><strong>Monitoreo continuo</strong> - Seguimiento de rendimiento y seguridad</li>
-                    <li><strong>Plan de expansión</strong> - Preparación para crecimiento futuro</li>
-                </ol>
-            </div>
-
-            <div class="impact-phrase final-message">
-                "Esta no es una red para hoy, es una red para los próximos 5-10 años"
-            </div>
-        </div>
-
-        <!-- Botones de Acción -->
-        <div class="action-buttons">
-            <button class="btn" onclick="startPresentation()">🎬 Iniciar Presentación</button>
-            <button class="btn" onclick="showConfig()">⚙️ Ver Configuración</button>
-            <button class="btn" onclick="showDemo()">🔍 Demo Técnica</button>
-        </div>
-    </div>
-
-    <div class="footer">
-        <p>Proyecto Final - Administración de Centros de Cómputo | 2025</p>
-        <p>Equipo TechSolutions - Transformación de Infraestructura</p>
-    </div>
-
-    <script src="script.js"></script>
+            // Crear paquetes de datos animados
+            for (let i = 0; i < 6; i++) {
+                const packet = document.createElement('div');
+                packet.classList.add('data-packet');
+                
+                packet.style.left = `${10 + Math.random() * 80}vw`;
+                packet.style.top = `${10 + Math.random() * 80}vh`;
+                packet.style.animationDelay = `${Math.random() * 8}s`;
+                
+                bg.appendChild(packet);
+            }
+        }
+        
+        // Inicializar el fondo de red
+        document.addEventListener('DOMContentLoaded', createNetworkBackground);
+    </script>
 </body>
 </html>
